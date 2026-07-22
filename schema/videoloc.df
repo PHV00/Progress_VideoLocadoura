@@ -1,148 +1,391 @@
-ADD TABLE "Cliente"
+ADD TABLE "Cidades"
   AREA "Schema Area"
-  LABEL "Cliente"
-  DUMP-NAME "cliente"
+  LABEL "Cidades"
+  DESCRIPTION "Cadastro de cidades da videolocadora"
+  DUMP-NAME "cidades"
 
-ADD FIELD "IdCliente" OF "Cliente" AS integer
-  FORMAT ">>>>>>>>9"
+ADD FIELD "CodCidade" OF "Cidades" AS integer
+  FORMAT ">>>>9"
   INITIAL "0"
   LABEL "Codigo"
+  COLUMN-LABEL "Codigo"
   POSITION 2
   MAX-WIDTH 4
+  VALEXP "CodCidade > 0"
+  VALMSG "O codigo da cidade deve ser maior que zero."
+  HELP "Codigo gerado pela sequence seqCidade."
   ORDER 10
   MANDATORY
 
-ADD FIELD "Nome" OF "Cliente" AS character
-  FORMAT "x(60)"
-  INITIAL ""
-  LABEL "Nome"
-  POSITION 3
-  MAX-WIDTH 120
-  ORDER 20
-  MANDATORY
-
-ADD FIELD "Telefone" OF "Cliente" AS character
-  FORMAT "x(20)"
-  INITIAL ""
-  LABEL "Telefone"
-  POSITION 4
-  MAX-WIDTH 40
-  ORDER 30
-
-ADD INDEX "pkCliente" ON "Cliente"
-  AREA "Schema Area"
-  UNIQUE
-  PRIMARY
-  INDEX-FIELD "IdCliente" ASCENDING
-
-
-ADD TABLE "Filme"
-  AREA "Schema Area"
-  LABEL "Filme"
-  DUMP-NAME "filme"
-
-ADD FIELD "IdFilme" OF "Filme" AS integer
-  FORMAT ">>>>>>>>9"
-  INITIAL "0"
-  LABEL "Codigo"
-  POSITION 2
-  MAX-WIDTH 4
-  ORDER 10
-  MANDATORY
-
-ADD FIELD "Titulo" OF "Filme" AS character
-  FORMAT "x(80)"
-  INITIAL ""
-  LABEL "Titulo"
-  POSITION 3
-  MAX-WIDTH 160
-  ORDER 20
-  MANDATORY
-
-ADD FIELD "Genero" OF "Filme" AS character
+ADD FIELD "NomCidade" OF "Cidades" AS character
   FORMAT "x(30)"
   INITIAL ""
-  LABEL "Genero"
-  POSITION 4
-  MAX-WIDTH 60
-  ORDER 30
-
-ADD FIELD "Disponivel" OF "Filme" AS logical
-  FORMAT "Sim/Nao"
-  INITIAL "yes"
-  LABEL "Disponivel"
-  POSITION 5
-  MAX-WIDTH 1
-  ORDER 40
-
-ADD INDEX "pkFilme" ON "Filme"
-  AREA "Schema Area"
-  UNIQUE
-  PRIMARY
-  INDEX-FIELD "IdFilme" ASCENDING
-
-
-ADD TABLE "Locacao"
-  AREA "Schema Area"
-  LABEL "Locacao"
-  DUMP-NAME "locacao"
-
-ADD FIELD "IdLocacao" OF "Locacao" AS integer
-  FORMAT ">>>>>>>>9"
-  INITIAL "0"
-  LABEL "Codigo"
-  POSITION 2
-  MAX-WIDTH 4
-  ORDER 10
-  MANDATORY
-
-ADD FIELD "IdCliente" OF "Locacao" AS integer
-  FORMAT ">>>>>>>>9"
-  INITIAL "0"
-  LABEL "Cliente"
+  LABEL "Cidade"
+  COLUMN-LABEL "Cidade"
   POSITION 3
-  MAX-WIDTH 4
+  MAX-WIDTH 60
+  VALEXP "LENGTH(TRIM(NomCidade)) > 0"
+  VALMSG "Informe o nome da cidade."
+  HELP "Informe o nome da cidade."
   ORDER 20
   MANDATORY
 
-ADD FIELD "IdFilme" OF "Locacao" AS integer
-  FORMAT ">>>>>>>>9"
-  INITIAL "0"
-  LABEL "Filme"
+ADD FIELD "CodUF" OF "Cidades" AS character
+  FORMAT "x(2)"
+  INITIAL ""
+  LABEL "UF"
+  COLUMN-LABEL "UF"
   POSITION 4
   MAX-WIDTH 4
+  VALEXP "LENGTH(TRIM(CodUF)) = 2"
+  VALMSG "A UF deve possuir exatamente dois caracteres."
+  HELP "Informe a sigla da UF com dois caracteres."
   ORDER 30
   MANDATORY
 
-ADD FIELD "DataLocacao" OF "Locacao" AS date
-  FORMAT "99/99/9999"
-  INITIAL "today"
-  LABEL "Data da locacao"
-  POSITION 5
-  MAX-WIDTH 4
-  ORDER 40
-  MANDATORY
-
-ADD FIELD "DataDevolucao" OF "Locacao" AS date
-  FORMAT "99/99/9999"
-  INITIAL ?
-  LABEL "Data da devolucao"
-  POSITION 6
-  MAX-WIDTH 4
-  ORDER 50
-
-ADD INDEX "pkLocacao" ON "Locacao"
+ADD INDEX "codigo" ON "Cidades"
   AREA "Schema Area"
   UNIQUE
   PRIMARY
-  INDEX-FIELD "IdLocacao" ASCENDING
+  INDEX-FIELD "CodCidade" ASCENDING
 
-ADD INDEX "idxLocacaoCliente" ON "Locacao"
+
+ADD TABLE "Clientes"
   AREA "Schema Area"
-  INDEX-FIELD "IdCliente" ASCENDING
+  LABEL "Clientes"
+  DESCRIPTION "Cadastro de clientes da videolocadora"
+  DUMP-NAME "clientes"
 
-ADD INDEX "idxLocacaoFilme" ON "Locacao"
+ADD FIELD "CodCliente" OF "Clientes" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Codigo"
+  COLUMN-LABEL "Codigo"
+  POSITION 2
+  MAX-WIDTH 4
+  VALEXP "CodCliente > 0"
+  VALMSG "O codigo do cliente deve ser maior que zero."
+  HELP "Codigo gerado pela sequence seqCliente."
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "NomCliente" OF "Clientes" AS character
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Nome"
+  COLUMN-LABEL "Nome"
+  POSITION 3
+  MAX-WIDTH 60
+  VALEXP "LENGTH(TRIM(NomCliente)) > 0"
+  VALMSG "Informe o nome do cliente."
+  HELP "Informe o nome do cliente."
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "CodEndereco" OF "Clientes" AS character
+  FORMAT "x(50)"
+  INITIAL ""
+  LABEL "Endereco"
+  COLUMN-LABEL "Endereco"
+  POSITION 4
+  MAX-WIDTH 100
+  HELP "Informe o endereco do cliente."
+  ORDER 30
+
+ADD FIELD "CodCidade" OF "Clientes" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Cidade"
+  COLUMN-LABEL "Cidade"
+  POSITION 5
+  MAX-WIDTH 4
+  VALEXP "CodCidade > 0"
+  VALMSG "O codigo da cidade deve ser maior que zero."
+  HELP "Informe uma cidade cadastrada."
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "Observacao" OF "Clientes" AS character
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "Observacao"
+  COLUMN-LABEL "Observacao"
+  POSITION 6
+  MAX-WIDTH 120
+  HELP "Observacoes opcionais sobre o cliente."
+  ORDER 50
+
+ADD INDEX "codigo" ON "Clientes"
   AREA "Schema Area"
-  INDEX-FIELD "IdFilme" ASCENDING
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "CodCliente" ASCENDING
 
-.
+
+ADD TABLE "Filmes"
+  AREA "Schema Area"
+  LABEL "Filmes"
+  DESCRIPTION "Cadastro de filmes da videolocadora"
+  DUMP-NAME "filmes"
+
+ADD FIELD "CodFilme" OF "Filmes" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Codigo"
+  COLUMN-LABEL "Codigo"
+  POSITION 2
+  MAX-WIDTH 4
+  VALEXP "CodFilme > 0"
+  VALMSG "O codigo do filme deve ser maior que zero."
+  HELP "Codigo gerado pela sequence seqFilme."
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "NomFilme" OF "Filmes" AS character
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "Filme"
+  COLUMN-LABEL "Filme"
+  POSITION 3
+  MAX-WIDTH 120
+  VALEXP "LENGTH(TRIM(NomFilme)) > 0"
+  VALMSG "Informe o nome do filme."
+  HELP "Informe o nome do filme."
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "DesSinopse" OF "Filmes" AS character
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Sinopse"
+  COLUMN-LABEL "Sinopse"
+  POSITION 4
+  MAX-WIDTH 400
+  VALEXP "LENGTH(TRIM(DesSinopse)) > 0"
+  VALMSG "Informe a sinopse do filme."
+  HELP "Informe uma breve sinopse do filme."
+  ORDER 30
+  MANDATORY
+  VIEW-AS "EDITOR" SIZE 60 BY 3
+
+ADD FIELD "ValFilme" OF "Filmes" AS decimal
+  FORMAT ">>>>>>>9.99"
+  INITIAL "0"
+  LABEL "Valor"
+  COLUMN-LABEL "Valor"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  VALEXP "ValFilme >= 0"
+  VALMSG "O valor do filme nao pode ser negativo."
+  HELP "Informe o valor unitario do aluguel do filme."
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "CodGenero" OF "Filmes" AS character
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Genero"
+  COLUMN-LABEL "Genero"
+  POSITION 6
+  MAX-WIDTH 40
+  VALEXP "LENGTH(TRIM(CodGenero)) > 0"
+  VALMSG "Informe o genero do filme."
+  HELP "Informe o genero do filme."
+  ORDER 50
+  MANDATORY
+
+ADD INDEX "codigo" ON "Filmes"
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "CodFilme" ASCENDING
+
+
+ADD TABLE "Alugueis"
+  AREA "Schema Area"
+  LABEL "Alugueis"
+  DESCRIPTION "Cabecalho dos alugueis realizados"
+  DUMP-NAME "alugueis"
+
+ADD FIELD "CodAluguel" OF "Alugueis" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Aluguel"
+  COLUMN-LABEL "Aluguel"
+  POSITION 2
+  MAX-WIDTH 4
+  VALEXP "CodAluguel > 0"
+  VALMSG "O codigo do aluguel deve ser maior que zero."
+  HELP "Codigo gerado pela sequence seqAluguel."
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "CodCliente" OF "Alugueis" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Cliente"
+  COLUMN-LABEL "Cliente"
+  POSITION 3
+  MAX-WIDTH 4
+  VALEXP "CodCliente > 0"
+  VALMSG "O codigo do cliente deve ser maior que zero."
+  HELP "Informe um cliente cadastrado."
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "DatAluguel" OF "Alugueis" AS date
+  FORMAT "99/99/9999"
+  INITIAL "TODAY"
+  LABEL "Data"
+  COLUMN-LABEL "Data"
+  POSITION 4
+  MAX-WIDTH 4
+  VALEXP "DatAluguel <> ?"
+  VALMSG "Informe uma data valida para o aluguel."
+  HELP "Informe a data do aluguel."
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "ValAluguel" OF "Alugueis" AS decimal
+  FORMAT ">>>>>>>9.99"
+  INITIAL "0"
+  LABEL "Total"
+  COLUMN-LABEL "Total"
+  POSITION 5
+  MAX-WIDTH 17
+  DECIMALS 2
+  VALEXP "ValAluguel >= 0"
+  VALMSG "O total do aluguel nao pode ser negativo."
+  HELP "Valor total calculado a partir dos filmes do aluguel."
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "Observacao" OF "Alugueis" AS character
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "Observacao"
+  COLUMN-LABEL "Observacao"
+  POSITION 6
+  MAX-WIDTH 120
+  HELP "Observacoes opcionais sobre o aluguel."
+  ORDER 50
+
+ADD INDEX "cliente" ON "Alugueis"
+  AREA "Schema Area"
+  INDEX-FIELD "CodCliente" ASCENDING
+
+ADD INDEX "codigo" ON "Alugueis"
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "CodAluguel" ASCENDING
+
+ADD INDEX "data" ON "Alugueis"
+  AREA "Schema Area"
+  INDEX-FIELD "DatAluguel" ASCENDING
+
+
+ADD TABLE "Aluguel_filmes"
+  AREA "Schema Area"
+  LABEL "Aluguel filmes"
+  DESCRIPTION "Itens de filmes pertencentes a cada aluguel"
+  DUMP-NAME "aluguel_filmes"
+
+ADD FIELD "CodAluguel" OF "Aluguel_filmes" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Aluguel"
+  COLUMN-LABEL "Aluguel"
+  POSITION 2
+  MAX-WIDTH 4
+  VALEXP "CodAluguel > 0"
+  VALMSG "O codigo do aluguel deve ser maior que zero."
+  HELP "Informe um aluguel existente."
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "CodItem" OF "Aluguel_filmes" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Item"
+  COLUMN-LABEL "Item"
+  POSITION 3
+  MAX-WIDTH 4
+  VALEXP "CodItem > 0"
+  VALMSG "O codigo do item deve ser maior que zero."
+  HELP "Numero sequencial do item dentro do aluguel."
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "CodFilme" OF "Aluguel_filmes" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Filme"
+  COLUMN-LABEL "Filme"
+  POSITION 4
+  MAX-WIDTH 4
+  VALEXP "CodFilme > 0"
+  VALMSG "O codigo do filme deve ser maior que zero."
+  HELP "Informe um filme cadastrado."
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "NumQuantidade" OF "Aluguel_filmes" AS integer
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Quantidade"
+  COLUMN-LABEL "Quantidade"
+  POSITION 5
+  MAX-WIDTH 4
+  VALEXP "NumQuantidade > 0"
+  VALMSG "A quantidade deve ser maior que zero."
+  HELP "Informe a quantidade alugada."
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "ValTotal" OF "Aluguel_filmes" AS decimal
+  FORMAT ">>>>>>>9.99"
+  INITIAL "0"
+  LABEL "Valor Total"
+  COLUMN-LABEL "Valor Total"
+  POSITION 6
+  MAX-WIDTH 17
+  DECIMALS 2
+  VALEXP "ValTotal >= 0"
+  VALMSG "O valor total do item nao pode ser negativo."
+  HELP "Valor calculado pela quantidade multiplicada pelo valor do filme."
+  ORDER 50
+  MANDATORY
+
+ADD INDEX "codigo" ON "Aluguel_filmes"
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "CodAluguel" ASCENDING
+  INDEX-FIELD "CodItem" ASCENDING
+
+ADD INDEX "filme" ON "Aluguel_filmes"
+  AREA "Schema Area"
+  INDEX-FIELD "CodFilme" ASCENDING
+
+
+ADD SEQUENCE "seqCidade"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT yes
+
+ADD SEQUENCE "seqCliente"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT yes
+
+ADD SEQUENCE "seqAluguel"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT yes
+
+ADD SEQUENCE "seqFilme"
+  INITIAL 0
+  INCREMENT 1
+  CYCLE-ON-LIMIT yes

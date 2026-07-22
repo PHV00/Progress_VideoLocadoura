@@ -1,4 +1,4 @@
-O sistema utilizado criar dois arquivos o videolocadora.df responsável pelos schema do banco e o seu respectivo carregador (carregar-schema.p) responsável pela aplicação das mudanças e execução do "schema", isso se dando por meio dos comandos abaixo(o qual executa ao final uma instancia do progress e roda seu schema)
+O sistema utilizado, criar dois arquivos o videolocadora.df responsável pelos schema do banco e o seu respectivo carregador (carregar-schema.p) responsável pela aplicação das mudanças e execução do "schema", isso se dando por meio dos comandos abaixo(o qual executa ao final uma instancia do progress e roda seu schema)
 
 //criar pastas
 mkdir C:\Progress_Final\video_locadora\schema\db
