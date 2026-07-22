@@ -1,0 +1,151 @@
+//tabela Cliente com seus campos 
+
+ADD TABLE "Cliente"
+  AREA "Schema Area"
+  LABEL "Cliente"
+  DUMP-NAME "cliente"
+
+ADD FIELD "IdCliente" OF "Cliente" AS integer
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Codigo"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "Nome" OF "Cliente" AS character
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 3
+  MAX-WIDTH 120
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "Telefone" OF "Cliente" AS character
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Telefone"
+  POSITION 4
+  MAX-WIDTH 40
+  ORDER 30
+
+ADD INDEX "pkCliente" ON "Cliente"
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "IdCliente" ASCENDING
+
+// tabela Filme com seus campos
+ADD TABLE "Filme"
+  AREA "Schema Area"
+  LABEL "Filme"
+  DUMP-NAME "filme"
+
+ADD FIELD "IdFilme" OF "Filme" AS integer
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Codigo"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "Titulo" OF "Filme" AS character
+  FORMAT "x(80)"
+  INITIAL ""
+  LABEL "Titulo"
+  POSITION 3
+  MAX-WIDTH 160
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "Genero" OF "Filme" AS character
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Genero"
+  POSITION 4
+  MAX-WIDTH 60
+  ORDER 30
+
+ADD FIELD "Disponivel" OF "Filme" AS logical
+  FORMAT "Sim/Nao"
+  INITIAL "yes"
+  LABEL "Disponivel"
+  POSITION 5
+  MAX-WIDTH 1
+  ORDER 40
+
+ADD INDEX "pkFilme" ON "Filme"
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "IdFilme" ASCENDING
+
+// tabela Locacao com seus campos
+
+ADD TABLE "Locacao"
+  AREA "Schema Area"
+  LABEL "Locacao"
+  DUMP-NAME "locacao"
+
+ADD FIELD "IdLocacao" OF "Locacao" AS integer
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Codigo"
+  POSITION 2
+  MAX-WIDTH 4
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "IdCliente" OF "Locacao" AS integer
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Cliente"
+  POSITION 3
+  MAX-WIDTH 4
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "IdFilme" OF "Locacao" AS integer
+  FORMAT ">>>>>>>>9"
+  INITIAL "0"
+  LABEL "Filme"
+  POSITION 4
+  MAX-WIDTH 4
+  ORDER 30
+  MANDATORY
+
+ADD FIELD "DataLocacao" OF "Locacao" AS date
+  FORMAT "99/99/9999"
+  INITIAL "today"
+  LABEL "Data da locacao"
+  POSITION 5
+  MAX-WIDTH 4
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "DataDevolucao" OF "Locacao" AS date
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data da devolucao"
+  POSITION 6
+  MAX-WIDTH 4
+  ORDER 50
+
+ADD INDEX "pkLocacao" ON "Locacao"
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "IdLocacao" ASCENDING
+
+ADD INDEX "idxLocacaoCliente" ON "Locacao"
+  AREA "Schema Area"
+  INDEX-FIELD "IdCliente" ASCENDING
+
+ADD INDEX "idxLocacaoFilme" ON "Locacao"
+  AREA "Schema Area"
+  INDEX-FIELD "IdFilme" ASCENDING
+
+.
