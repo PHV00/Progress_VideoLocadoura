@@ -1,5 +1,3 @@
-//tabela Cliente com seus campos 
-
 ADD TABLE "Cliente"
   AREA "Schema Area"
   LABEL "Cliente"
@@ -37,7 +35,7 @@ ADD INDEX "pkCliente" ON "Cliente"
   PRIMARY
   INDEX-FIELD "IdCliente" ASCENDING
 
-// tabela Filme com seus campos
+
 ADD TABLE "Filme"
   AREA "Schema Area"
   LABEL "Filme"
@@ -83,7 +81,6 @@ ADD INDEX "pkFilme" ON "Filme"
   PRIMARY
   INDEX-FIELD "IdFilme" ASCENDING
 
-// tabela Locacao com seus campos
 
 ADD TABLE "Locacao"
   AREA "Schema Area"
