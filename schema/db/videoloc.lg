@@ -1,0 +1,47 @@
+
+                Wed Jul 22 22:23:10 2026
+[2026/07/22@22:23:10.329-0300] P-17616      T-17908 I DBUTIL   : (451)   prostrct create session begin for vitor on CON:. 
+[2026/07/22@22:23:10.330-0300] P-17616      T-17908 I DBUTIL   : (12862) Structure file videoloc.st used to create database with blocksize 4096. 
+[2026/07/22@22:23:10.332-0300] P-17616      T-17908 I DBUTIL   : (334)   prostrct create session end. 
+[2026/07/22@22:23:10.347-0300] P-17616      T-17908 I DBUTIL   : (451)   procopy session begin for vitor on CON:. 
+[2026/07/22@22:23:10.359-0300] P-17616      T-17908 I DBUTIL   : (334)   procopy session end. 
+
+                Wed Jul 22 22:23:10 2026
+[2026/07/22@22:23:10.379-0300] P-17616      T-17908 I DBUTIL   : (451)   procopy get default SQL DBA session begin for vitor on CON:. 
+[2026/07/22@22:23:10.379-0300] P-17616      T-17908 I DBUTIL   : (15321) Before Image Log Initialization at block 0  offset 0. 
+[2026/07/22@22:23:10.386-0300] P-17616      T-17908 I DBUTIL   : (1365)  Database copied from C:\Progress\OpenEdge\empty. 
+[2026/07/22@22:23:10.388-0300] P-17616      T-17908 I DBUTIL   : (15109) At Database close the number of live transactions is 0. 
+[2026/07/22@22:23:10.388-0300] P-17616      T-17908 I DBUTIL   : (15743) Before Image Log Completion at Block 0 Offset 639. 
+[2026/07/22@22:23:10.390-0300] P-17616      T-17908 I DBUTIL   : (334)   procopy get default SQL DBA session end. 
+
+                Wed Jul 22 22:23:18 2026
+[2026/07/22@22:23:18.135-0300] P-6892       T-5736  I ABL      : (451)   Single-user session begin for vitor on CON:. 
+[2026/07/22@22:23:18.136-0300] P-6892       T-5736  I ABL      : (15321) Before Image Log Initialization at block 0  offset 639. 
+[2026/07/22@22:23:18.146-0300] P-6892       T-5736  I ABL      : (7129)  Usr 0 set name to vitor. 
+[2026/07/22@22:23:18.389-0300] P-6892       T-5736  I ABL      : (15109) At Database close the number of live transactions is 0. 
+[2026/07/22@22:23:18.389-0300] P-6892       T-5736  I ABL      : (15743) Before Image Log Completion at Block 18 Offset 7569. 
+[2026/07/22@22:23:18.391-0300] P-6892       T-5736  I ABL      : (334)   Single-user session end. 
+
+                Wed Jul 22 22:27:09 2026
+[2026/07/22@22:27:09.133-0300] P-14828      T-10012 I ABL      : (451)   Single-user session begin for vitor on CON:. 
+[2026/07/22@22:27:09.134-0300] P-14828      T-10012 I ABL      : (15321) Before Image Log Initialization at block 18  offset 7569. 
+[2026/07/22@22:27:09.144-0300] P-14828      T-10012 I ABL      : (7129)  Usr 0 set name to vitor. 
+[2026/07/22@22:27:20.116-0300] P-14828      T-10012 I ABL      : (15109) At Database close the number of live transactions is 0. 
+[2026/07/22@22:27:20.116-0300] P-14828      T-10012 I ABL      : (15743) Before Image Log Completion at Block 18 Offset 7621. 
+[2026/07/22@22:27:20.118-0300] P-14828      T-10012 I ABL      : (334)   Single-user session end. 
+
+                Wed Jul 22 22:28:50 2026
+[2026/07/22@22:28:50.459-0300] P-11132      T-6776  I ABL      : (451)   Single-user session begin for vitor on CON:. 
+[2026/07/22@22:28:50.460-0300] P-11132      T-6776  I ABL      : (15321) Before Image Log Initialization at block 18  offset 7621. 
+[2026/07/22@22:28:50.471-0300] P-11132      T-6776  I ABL      : (7129)  Usr 0 set name to vitor. 
+[2026/07/22@22:31:19.369-0300] P-11132      T-6776  I ABL      : (15109) At Database close the number of live transactions is 0. 
+[2026/07/22@22:31:19.369-0300] P-11132      T-6776  I ABL      : (15743) Before Image Log Completion at Block 19 Offset 1869. 
+[2026/07/22@22:31:19.372-0300] P-11132      T-6776  I ABL      : (334)   Single-user session end. 
+
+                Wed Jul 22 22:40:35 2026
+[2026/07/22@22:40:35.113-0300] P-12024      T-3064  I ABL      : (451)   Single-user session begin for vitor on CON:. 
+[2026/07/22@22:40:35.114-0300] P-12024      T-3064  I ABL      : (15321) Before Image Log Initialization at block 19  offset 1869. 
+[2026/07/22@22:40:35.124-0300] P-12024      T-3064  I ABL      : (7129)  Usr 0 set name to vitor. 
+[2026/07/22@22:44:59.624-0300] P-12024      T-3064  I ABL      : (15109) At Database close the number of live transactions is 0. 
+[2026/07/22@22:44:59.624-0300] P-12024      T-3064  I ABL      : (15743) Before Image Log Completion at Block 20 Offset 1926. 
+[2026/07/22@22:44:59.626-0300] P-12024      T-3064  I ABL      : (334)   Single-user session end. 

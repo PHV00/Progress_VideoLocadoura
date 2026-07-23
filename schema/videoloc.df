@@ -3,6 +3,9 @@ ADD TABLE "Cidades"
   LABEL "Cidades"
   DESCRIPTION "Cadastro de cidades da videolocadora"
   DUMP-NAME "cidades"
+  TABLE-TRIGGER "CREATE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/cidades/cidades-create.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/cidades/cidades-write.p" CRC "?"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/cidades/cidades-delete.p" CRC "?"
 
 ADD FIELD "CodCidade" OF "Cidades" AS integer
   FORMAT ">>>>9"
@@ -55,6 +58,9 @@ ADD TABLE "Clientes"
   LABEL "Clientes"
   DESCRIPTION "Cadastro de clientes da videolocadora"
   DUMP-NAME "clientes"
+  TABLE-TRIGGER "CREATE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/clientes/clientes-create.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/clientes/clientes-write.p" CRC "?"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/clientes/clientes-delete.p" CRC "?"
 
 ADD FIELD "CodCliente" OF "Clientes" AS integer
   FORMAT ">>>>9"
@@ -127,6 +133,9 @@ ADD TABLE "Filmes"
   LABEL "Filmes"
   DESCRIPTION "Cadastro de filmes da videolocadora"
   DUMP-NAME "filmes"
+  TABLE-TRIGGER "CREATE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/filmes/filmes-create.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/filmes/filmes-write.p" CRC "?"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/filmes/filmes-delete.p" CRC "?"
 
 ADD FIELD "CodFilme" OF "Filmes" AS integer
   FORMAT ">>>>9"
@@ -166,7 +175,6 @@ ADD FIELD "DesSinopse" OF "Filmes" AS character
   HELP "Informe uma breve sinopse do filme."
   ORDER 30
   MANDATORY
-  VIEW-AS "EDITOR" SIZE 60 BY 3
 
 ADD FIELD "ValFilme" OF "Filmes" AS decimal
   FORMAT ">>>>>>>9.99"
@@ -207,6 +215,9 @@ ADD TABLE "Alugueis"
   LABEL "Alugueis"
   DESCRIPTION "Cabecalho dos alugueis realizados"
   DUMP-NAME "alugueis"
+  TABLE-TRIGGER "CREATE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/alugueis/alugueis-create.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/alugueis/alugueis-write.p" CRC "?"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/alugueis/alugueis-delete.p" CRC "?"
 
 ADD FIELD "CodAluguel" OF "Alugueis" AS integer
   FORMAT ">>>>9"
@@ -291,6 +302,8 @@ ADD TABLE "Aluguel_filmes"
   LABEL "Aluguel filmes"
   DESCRIPTION "Itens de filmes pertencentes a cada aluguel"
   DUMP-NAME "aluguel_filmes"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/aluguel_filmes/aluguel-filmes-write.p" CRC "?"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "C:/Progress_Final/video_locadora/schema/triggers/aluguel_filmes/aluguel-filmes-delete.p" CRC "?"
 
 ADD FIELD "CodAluguel" OF "Aluguel_filmes" AS integer
   FORMAT ">>>>9"
@@ -373,19 +386,29 @@ ADD INDEX "filme" ON "Aluguel_filmes"
 ADD SEQUENCE "seqCidade"
   INITIAL 0
   INCREMENT 1
-  CYCLE-ON-LIMIT yes
+  CYCLE-ON-LIMIT no
+  MIN-VAL 0
+  MAX-VAL 2147483647
 
 ADD SEQUENCE "seqCliente"
   INITIAL 0
   INCREMENT 1
-  CYCLE-ON-LIMIT yes
+  CYCLE-ON-LIMIT no
+  MIN-VAL 0
+  MAX-VAL 2147483647
 
 ADD SEQUENCE "seqAluguel"
   INITIAL 0
   INCREMENT 1
-  CYCLE-ON-LIMIT yes
+  CYCLE-ON-LIMIT no
+  MIN-VAL 0
+  MAX-VAL 2147483647
 
 ADD SEQUENCE "seqFilme"
   INITIAL 0
   INCREMENT 1
-  CYCLE-ON-LIMIT yes
+  CYCLE-ON-LIMIT no
+  MIN-VAL 0
+  MAX-VAL 2147483647
+
+.
